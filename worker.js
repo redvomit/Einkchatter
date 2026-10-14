@@ -85,7 +85,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = "/" + env.SECRET_PATH;
-    if (!env.SECRET_PATH || url.pathname !== path) return new Response("Not found", { status: 404 });
+    if (!env.SECRET_PATH || url.pathname !== path) return new Response("Not found. secret set: " + !!env.SECRET_PATH + ", key set: " + !!env.ANTHROPIC_API_KEY, { status: 404 });
 
     let history = [];
     let note = "";
